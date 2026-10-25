@@ -59,8 +59,8 @@ stage file.
 ## Chrome
 
 Follow [prompts/chrome.md](prompts/chrome.md): verifier+advocate voice,
-quantified `lead-claim`, stance `tally`, click-to-quote (`a.claim-link` +
-`figure.quote-cite`).
+quantified `lead-claim`, stance `tally`, hover-to-quote in CRUX Viewer (`a.claim-link` +
+`sup.cite` linking each claim id).
 
 | After these artifacts exist | File |
 | --- | --- |
@@ -72,10 +72,12 @@ quantified `lead-claim`, stance `tally`, click-to-quote (`a.claim-link` +
 | Tournament cycle (judge) | `06_tournament.html` |
 | Web scout (if used) | `01_web_scout.html` |
 | Literature map (if used) | `literature_map.html` |
-| Review paper (if asked) | `<slug>_review.html` + `.pdf` |
+| Review paper: a journal issue (if asked) | `<slug>_review.html` + `.pdf` |
 
 ## Review paper (only when asked)
 
+A journal issue: a summary page, then one short article per hypothesis on
+what it combines and why.
 Follow [prompts/review-paper.md](prompts/review-paper.md); author HTML using
 `paper.css`. Suggested: `opus` / `high`.
 

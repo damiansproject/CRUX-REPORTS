@@ -13,19 +13,5 @@
 <nav class="crumb">{{nav}}</nav>
 {{body}}
 </div>
-<script>
-(function () {
-  function closeQuote() {
-    if (/^#q-/.test(location.hash)) location.hash = "!";
-  }
-  document.addEventListener("click", function (e) {
-    if (e.target.closest(".quote-cite, .claim-link, .cite")) return;
-    closeQuote();
-  });
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeQuote();
-  });
-})();
-</script>
 </body>
 </html>

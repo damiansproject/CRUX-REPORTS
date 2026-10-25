@@ -71,3 +71,9 @@ def test_only_claim_links_and_cite_superscripts_count() -> None:
 def test_superscript_without_a_clause_is_not_a_citation() -> None:
     html = '<p>Text<sup class="cite"><a href="#q-hyp_001-clm_p_one_0001">1</a></sup></p>'
     assert build_sidecar(html)['claim_ids'] == []
+
+
+def test_viewer_claim_links_give_the_same_ids_and_anchors() -> None:
+    crux_local = REVIEW.replace('#q-hyp_001-', 'https://crux.local/claim/').replace('#q-hyp_002-', 'https://crux.local/claim/')
+    assert build_sidecar(crux_local)['claim_ids'] == build_sidecar(REVIEW)['claim_ids']
+    assert build_sidecar(crux_local)['claim_anchors'] == build_sidecar(REVIEW)['claim_anchors']

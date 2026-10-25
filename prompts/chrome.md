@@ -14,8 +14,8 @@ Reports are a **verifier + advocate**, not a helper persona.
   to do next *and* the evidence size. Do not hedge that sentence with
   may / might / could / potentially. Residual doubt goes in a short Limitations
   stretch after the case.
-- **Verifier, not theatre.** Every claim must be checkable in one click:
-  click the statement → the source quote. “Forty studies report that…”
+- **Verifier, not theatre.** Every claim must be checkable at a glance:
+  hover the statement in CRUX Viewer → the source quote. “Forty studies report that…”
   — name the count; do not narrate “searching…” / “synthesizing…”.
 - **Stance words:** **supporting** / **mentioning** / **contradicting**. Do
   not invent a Yes/No meter.
@@ -35,23 +35,18 @@ Reports are a **verifier + advocate**, not a helper persona.
    - **mentioning** — other banked claims not used in a chain
    - **contradicting** — critique `issues` + `unsupported_hops` (and revise
      `needs_claims` gaps if still open)
-3. **In-text citations (click-to-quote).** Cites live **inside the argument
-   prose** — statement, mechanism, and plan — on the clause they support.
-   Wrap that clause in `<a class="claim-link" href="#q-…">…</a>` plus
-   `<sup class="cite"><a href="#q-…">n</a></sup>`. Two (or more) sources on
-   **one sentence** is allowed: keep one `claim-link` on the clause, then
-   adjacent superscripts (`<sup class="cite">1</sup><sup class="cite">2</sup>`),
-   each `href` a different figure. After **that same paragraph**, put one
-   `<figure class="quote-cite" id="q-…">` per cited claim (sibling, not
-   inside `<p>`). Figure ids must be unique on the page (`q-<hyp_or_prp>-<claim_id>`).
-   Figcaption starts with `<a class="quote-close" href="#!" aria-label="Close">×</a>`
-   then `<span class="quote-title">Supporting quotes</span>` (or Mentioning /
-   Contradicting quotes), then `<span class="stance supporting">supporting</span>`
-   + claim id + paper. `<blockquote>` uses `<mark>` on the clause that supports
-   the sentence. Screen CSS shows the figure as a popover on click (`:target`);
-   print shows every card. Use the claim’s stored `quotes` — do not invent text.
-   If a sentence has no quote, do not write it as load-bearing. Include
-   `template.html`’s click-outside script (chrome).
+3. **In-text citations (hover-to-quote in CRUX Viewer).** Cites live **inside the
+   argument prose** — statement, mechanism, and evidence — on the clause they support.
+   Wrap that clause in `<a class="claim-link" href="https://crux.local/claim/<claim_id>">…</a>`
+   plus `<sup class="cite"><a href="https://crux.local/claim/<claim_id>">n</a></sup>`.
+   CRUX Viewer reads these links from the PDF: hovering the clause shows that
+   claim's stored quote, and its sidebar lists every claim. The report itself
+   carries no quote boxes or popovers. Two (or more) sources on **one sentence**
+   is allowed: keep one `claim-link` on the clause, then adjacent superscripts
+   (`<sup class="cite">1</sup><sup class="cite">2</sup>`), each `href` a
+   different claim. Cite only claims banked in this run — their stored `quotes`
+   are what the viewer shows; do not invent text. If a sentence has no quote,
+   do not write it as load-bearing.
    **Not citations:** wrapping the whole statement as one link; putting every
    cite only in a `<details>` list; a bibliography after an uncited mechanism.
 4. **Type** — argument body stays Georgia; tallies, badges, captions, crumbs,
