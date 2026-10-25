@@ -1,0 +1,220 @@
+/* Browser report stylesheet. Copy into <style> (see template.html).
+   Do not invent a new stylesheet. @media print is the PDF page.
+*/
+
+:root{
+  --bg:#fcfcf8; --fg:#142428; --muted:#5c6568; --line:#e4e4dc; --card:#fff;
+  --accent:#0040ff; --cite:#0040ff;
+  --measure:760px;
+  --serif:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif;
+  --sans:ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --stance-supporting:#4faf78;
+  --stance-supporting-fill:#349d42;
+  --stance-mentioning:#262626;
+  --stance-mentioning-wash:#eaf6fb;
+  --stance-contradicting:#0040ff;
+  --quote-mark:#d7efe8;
+  --title:#083d44;
+}
+
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font:17px/1.65 var(--serif);
+}
+.wrap{max-width:var(--measure);margin:0 auto;padding:40px 22px 96px}
+
+nav.crumb{
+  font-family:var(--sans);font-size:12.5px;color:var(--muted);
+  margin:0 0 28px;
+}
+nav.crumb a{color:var(--accent);text-decoration:none}
+
+h1,.title{
+  font-size:30px;line-height:1.22;margin:0 0 10px;text-align:left;
+  font-family:var(--serif);font-weight:700;color:var(--title);
+}
+.subtitle{
+  text-align:left;color:var(--muted);font-size:15px;font-style:italic;
+  margin:0 0 8px;
+}
+.meta,.lead{
+  font-family:var(--sans);text-align:left;color:var(--muted);font-size:13.5px;
+  margin:0 0 18px;
+}
+.lead{font-size:16px;font-style:italic;margin-bottom:10px}
+.lead-claim{
+  font-family:var(--serif);font-size:19px;line-height:1.45;text-align:left;
+  margin:0 0 18px;font-style:normal;color:var(--fg);
+}
+
+h2{
+  font-size:20px;margin:36px 0 10px;font-family:var(--serif);font-weight:700;
+  color:var(--title);
+}
+h3{font-size:17px;margin:22px 0 8px;font-family:var(--serif);font-weight:700;color:var(--title)}
+h4{font-size:16px;margin:18px 0 6px;font-family:var(--serif);font-weight:700}
+
+p{margin:0 0 14px;text-align:justify}
+strong{font-weight:700}
+em{font-style:italic}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+hr{border:none;border-top:1px solid var(--line);margin:22px 0}
+ul,ol{margin:0 0 14px;padding-left:24px}
+li{margin:4px 0}
+blockquote{
+  margin:0 0 14px;padding:2px 16px;border-left:3px solid var(--line);
+  color:var(--muted);
+}
+code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.9em;background:#f4f4ee;padding:.1em .35em;border-radius:4px;
+}
+
+.abstract,.status,.box{
+  background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:14px 18px;margin:0 0 22px;font-size:15.5px;line-height:1.55;
+  text-align:justify;
+}
+.status,.box{text-align:left}
+
+/* Load-bearing clause — click opens the quote popover (:target) */
+a.claim-link{
+  color:inherit;text-decoration:none;
+  border-bottom:1px dotted #8aa0a6;
+  cursor:pointer;
+}
+a.claim-link:hover,a.claim-link:focus{
+  text-decoration:none;background:var(--stance-mentioning-wash);
+  border-bottom-color:var(--cite);
+}
+a.claim-link:focus-visible{
+  outline:2px solid var(--accent);outline-offset:2px;
+}
+
+sup.cite{font-size:.7em;line-height:0;font-family:var(--sans)}
+sup.cite a{
+  color:var(--cite);text-decoration:none;font-weight:650;
+  padding:.05em .28em;border-radius:3px;
+}
+sup.cite a:hover,sup.cite a:focus{background:var(--stance-mentioning-wash);text-decoration:none}
+
+details.ids{margin:8px 0 0;color:var(--muted);font-size:13px;font-family:var(--sans)}
+details.ids summary{cursor:pointer}
+
+/* Stance tally — counts only */
+p.tally{
+  font-family:var(--sans);font-size:13.5px;line-height:1.4;color:var(--fg);
+  display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;
+  margin:0 0 22px;padding:10px 0 16px;list-style:none;text-align:left;
+  border-bottom:1px solid var(--line);
+}
+.tally-item{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font-weight:550}
+.tally-item i{
+  width:10px;height:10px;border-radius:50%;display:inline-block;
+  background:currentColor;flex:none;
+}
+.tally-item.supporting{color:var(--stance-supporting-fill)}
+.tally-item.mentioning{color:var(--stance-mentioning)}
+.tally-item.contradicting{color:var(--stance-contradicting)}
+.tally-meta{color:var(--muted);font-weight:500}
+
+/* Kind / journal-style pills */
+.badge{
+  font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.02em;
+  text-transform:uppercase;display:inline-block;padding:2px 8px;border-radius:4px;
+  background:#f4f4ee;color:var(--muted);margin:0 4px 4px 0;
+}
+.badge.supporting{background:var(--stance-supporting);color:#fff}
+.badge.mentioning{background:var(--stance-mentioning-wash);color:var(--stance-mentioning)}
+.badge.contradicting{background:var(--stance-contradicting);color:#fff}
+
+/* Quote card. Screen: popover on :target. Print: in-flow. */
+.quote-cite{
+  margin:0 0 16px;padding:12px 16px 14px;background:var(--card);
+  border:1px solid var(--line);border-radius:10px;text-align:left;
+  border-left:3px solid var(--line);
+}
+.quote-cite:has(.stance.supporting){border-left-color:var(--stance-supporting)}
+.quote-cite:has(.stance.mentioning){border-left-color:var(--stance-mentioning)}
+.quote-cite:has(.stance.contradicting){border-left-color:var(--stance-contradicting)}
+.quote-cite figcaption{
+  font-family:var(--sans);font-size:12px;color:var(--muted);margin:0 0 8px;
+  line-height:1.4;
+}
+.quote-title{
+  font-family:var(--sans);font-size:13px;font-weight:650;color:var(--title);
+  display:block;margin:0 1.6em 4px 0;
+}
+.quote-close{
+  float:right;font-family:var(--sans);font-size:18px;line-height:1;
+  color:var(--muted);text-decoration:none;padding:0 .15em;
+}
+.quote-close:hover{color:var(--fg);text-decoration:none}
+.quote-cite blockquote{
+  margin:0;padding:0;border:0;color:var(--fg);font-size:15px;line-height:1.55;
+  font-family:var(--serif);
+}
+.quote-cite mark{
+  background:var(--quote-mark);color:inherit;padding:.05em .12em;
+  border-radius:2px;
+}
+.stance{
+  font-family:var(--sans);font-size:11px;font-weight:650;text-transform:uppercase;
+  letter-spacing:.03em;margin-right:8px;
+}
+.stance.supporting{color:var(--stance-supporting-fill)}
+.stance.mentioning{color:var(--stance-mentioning)}
+.stance.contradicting{color:var(--stance-contradicting)}
+
+ol.refs{
+  font-size:13.5px;line-height:1.5;padding-left:34px;
+}
+ol.refs li{margin:7px 0;word-break:break-word}
+ol.refs a{word-break:break-all}
+
+@media screen{
+  .quote-cite{
+    display:none;
+  }
+  .quote-cite:target{
+    display:block;
+    position:fixed;
+    left:50%;top:16%;
+    transform:translateX(-50%);
+    z-index:40;
+    width:min(36rem,calc(100vw - 2rem));
+    max-height:min(70vh,32rem);
+    overflow:auto;
+    margin:0;
+    box-shadow:0 18px 50px rgba(8,61,68,.2),0 0 0 100vmax rgba(20,36,40,.28);
+  }
+}
+
+@media print{
+  @page{size:A4;margin:20mm 18mm 20mm 18mm}
+  body{font:10.8pt/1.5 var(--serif);background:#fff}
+  .wrap{max-width:none;margin:0;padding:0}
+  nav.crumb{display:none}
+  .title,h1{font-size:19pt;margin:6pt 0 2pt}
+  .subtitle{font-size:9.5pt;margin:0 0 6pt}
+  .meta{font-size:9pt;margin:0 0 16pt}
+  h2{font-size:13pt;margin:16pt 0 5pt;break-after:avoid;page-break-after:avoid}
+  h3{font-size:11.4pt;margin:11pt 0 3pt;break-after:avoid;page-break-after:avoid}
+  p{margin:0 0 7pt;orphans:3;widows:3}
+  .abstract,.status,.box{padding:8pt 11pt;font-size:10pt}
+  ol.refs{font-size:8.6pt;line-height:1.34;padding-left:22pt}
+  .lead-claim{font-size:11.5pt;margin:0 0 10pt}
+  p.tally{font-size:8.5pt;margin:0 0 10pt;padding:0 0 8pt;gap:6pt 12pt}
+  .quote-close{display:none}
+  .quote-cite{
+    display:block;position:static;transform:none;box-shadow:none;
+    width:auto;max-height:none;overflow:visible;
+    padding:6pt 9pt;margin:0 0 8pt;
+  }
+  .quote-cite blockquote{font-size:9.2pt}
+  .badge{font-size:7.5pt;padding:1pt 5pt}
+  a.claim-link{background:none}
+}
